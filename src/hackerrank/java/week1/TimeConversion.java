@@ -1,4 +1,4 @@
-package hackerrank.java;
+package hackerrank.java.week1;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
