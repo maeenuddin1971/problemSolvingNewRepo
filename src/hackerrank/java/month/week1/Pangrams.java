@@ -13,14 +13,14 @@ public class Pangrams {
     }
 
     public static Boolean isPalin(String gh) {
-        Boolean isPalin = Boolean.TRUE;
         for (char ch = 'a'; ch <= 'z'; ch++) {
             if (!gh.contains(String.valueOf(ch))) {
-                isPalin = Boolean.FALSE;
-                break;
+                // return false as not contains
+                return Boolean.FALSE;
             }
         }
-        return isPalin;
+        // by default if not go at the upper condition return true
+        return Boolean.TRUE;
     }
 
     public static Boolean isPalinWithLambda(String gh) {
