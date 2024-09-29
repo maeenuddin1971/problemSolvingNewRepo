@@ -12,7 +12,7 @@ public class DrawingBook {
         //System.out.println(firstOne);
 
         int secondOne = (n - p) / 2;
-        
+
         if (n % 2 == 0 && p + 1 == n) {
             secondOne = 1;
         }
