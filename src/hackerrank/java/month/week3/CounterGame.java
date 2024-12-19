@@ -1,6 +1,5 @@
-package hackerrank.java.month.week2;
+package hackerrank.java.month.week3;
 
-import java.math.BigInteger;
 import java.util.Scanner;
 
 public class CounterGame {
