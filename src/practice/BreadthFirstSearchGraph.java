@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 public class BreadthFirstSearchGraph {
     static Boolean[] allAdj;
@@ -25,8 +26,10 @@ public class BreadthFirstSearchGraph {
 
         allAdj[0] = Boolean.TRUE;
 
-        System.out.println("Starting from 0");
-        performBFS(0, adj);
+        //System.out.println("Starting from 0");
+        //performBFS(0, adj);
+        System.out.println("DFS from 0");
+        performDFS(0, adj);
     }
 
     public static void addEdge(List<List<Integer>> lists, int first, int second) {
@@ -40,6 +43,23 @@ public class BreadthFirstSearchGraph {
 
         while (!pk.isEmpty()) {
             int curr = pk.poll();
+            System.out.println("Visited "+ curr);
+
+            for (int x : lists.get(curr)) {
+                if (!allAdj[x]) {
+                    allAdj[x] = true;
+                    pk.add(x);
+                }
+            }
+        }
+    }
+
+    public static void performDFS(int startNode, List<List<Integer>> lists) {
+        Stack<Integer> pk = new Stack<>();
+        pk.add(startNode);
+
+        while (!pk.isEmpty()) {
+            int curr = pk.pop();
             System.out.println("Visited "+ curr);
 
             for (int x : lists.get(curr)) {
