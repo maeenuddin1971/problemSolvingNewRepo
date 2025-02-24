@@ -1,6 +1,7 @@
 package hackerrank.java.week7;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -11,24 +12,31 @@ public class LilysHomework {
 
         int n = scanner.nextInt();
 
-        int[] h = new int[n];
-        int[] copyArray = new int[n];
+        Integer[] h = new Integer[n];
+        Integer[] copyArray = new Integer[n];
+        Integer[] copyArrayReverse = new Integer[n];
 
         Map<Integer, Integer> oneWay = new HashMap();
+        Map<Integer, Integer> reverseWay = new HashMap();
 
         for (int i = 0; i < n; i++) {
             h[i] = scanner.nextInt();
             copyArray[i] = h[i];
+            copyArrayReverse[i] = h[i];
             oneWay.put(h[i], i);
+            reverseWay.put(h[i], i);
         }
 
         Arrays.sort(h);
+        int first = oneWayCalculation(h, copyArray, oneWay);
 
-        oneWayCalculation(h, copyArray, oneWay);
+        Arrays.sort(h, Collections.reverseOrder());
+        int second = oneWayCalculation(h, copyArrayReverse, reverseWay);
+        System.out.println(first > second ? second : first);
     }
 
     // The basic implemenation showed for 3 4 2 5 1 in an ascending position
-    public static void oneWayCalculation(int[] arr, int[] copyArray, Map<Integer, Integer> oneWay) {
+    public static int oneWayCalculation(Integer[] arr, Integer[] copyArray, Map<Integer, Integer> oneWay) {
         int total = 0;
         for (int u = 0; u < arr.length; u++) {
             if (oneWay.get(arr[u]) != u) {
@@ -51,7 +59,6 @@ public class LilysHomework {
                 total++;
             }
         }
-
-        System.out.println(total);
+        return total;
     }
 }
